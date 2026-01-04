@@ -4,6 +4,8 @@
     --card-bg: rgba(255, 255, 255, 0.12); 
     --text-main: #ffffff;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* New Accent Color for Click */
+    --click-color: rgba(0, 150, 255, 0.4); 
 }
 
 body {
@@ -37,6 +39,11 @@ body {
     border: 3px solid rgba(255, 255, 255, 0.5);
     box-shadow: var(--shadow);
     margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+.header img:hover {
+    transform: rotate(360deg) scale(1.1);
 }
 
 .header h2 {
@@ -65,14 +72,25 @@ body {
     color: white;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .link-item:hover {
-    transform: scale(1.02);
+    transform: translateY(-4px) scale(1.03);
     background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* --- NEW CLICK COLOR ANIMATION --- */
+.link-item:active {
+    transform: scale(0.94); /* Shrink effect */
+    background: var(--click-color); /* Flash color on click */
+    border-color: #00d4ff; /* Bright border on click */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); /* Cyan glow */
+    transition: transform 0.1s, background 0.1s; /* Faster response */
 }
 
 .icon {
@@ -107,4 +125,8 @@ footer {
     .container { max-width: 100%; }
     body { padding-top: 30px; }
     .link-item { backdrop-filter: none; background: rgba(40, 40, 40, 0.8); }
+    /* Mobile specific click color */
+    .link-item:active {
+        background: rgba(0, 212, 255, 0.4);
+    }
 }
