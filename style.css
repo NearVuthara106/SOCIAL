@@ -1,43 +1,47 @@
-/* --- MINECRAFT PREMIUM CSS --- */
+/* --- MINECRAFT PREMIUM FULL STYLING --- */
+
+/* 1. Import Pixel Font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 :root {
-    --mc-dark: #222222;        /* ពណ៌ដុំ Netherite */
-    --mc-gold: #ffcc00;        /* ពណ៌មាស Premium */
-    --mc-emerald: #00ff6a;     /* ពណ៌ត្បូង Emerald សម្រាប់ ID */
+    --mc-dark: #222222;        /* Netherite Block Color */
+    --mc-gold: #ffcc00;        /* Gold/Premium Highlight */
+    --mc-emerald: #00ff6a;     /* Emerald Green for IDs */
     --mc-border-light: #555555;
     --mc-border-dark: #000000;
 }
 
+/* 2. Global Layout & Background */
 body {
     background-color: #000;
-    /* បង្កើត Grid តូចៗបែប Minecraft UI */
     background-image: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* រុញអ្វីៗគ្រប់យ៉ាងមកកណ្តាល */
+    align-items: center; /* Ensures everything stays in the center */
     min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'VT323', monospace; /* Minecraft Style Font */
     color: white;
+    -webkit-font-smoothing: none; /* Keeps font crisp/pixelated */
 }
 
-/* --- Profile Section --- */
+/* 3. Header & Profile (Centered & Circle Frame) */
 .header {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* ដាក់ Profile នៅកណ្តាល */
+    align-items: center; 
     padding-top: 50px;
     margin-bottom: 30px;
 }
 
-/* បង្កើត Frame រង្វង់សម្រាប់ Profile */
 .header img {
     width: 130px;
     height: 130px;
-    border-radius: 50%; /* ធ្វើឱ្យជារង្វង់ */
+    border-radius: 50%; /* Force Circle Frame */
     border: 4px solid var(--mc-gold);
-    object-fit: cover; /* ការពារកុំឱ្យរូបភាពយារ */
+    object-fit: cover;
     box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
     background-color: #333;
 }
@@ -45,13 +49,13 @@ body {
 .header h2 {
     margin-top: 15px;
     color: var(--mc-gold);
-    font-size: 1.6rem;
+    font-size: 2.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0px #000;
+    text-shadow: 4px 4px 0px #3f3f3f; /* Minecraft 3D Text Shadow */
 }
 
-/* --- Links Container --- */
+/* 4. Links Container */
 .container {
     width: 90%;
     max-width: 420px;
@@ -59,26 +63,25 @@ body {
     flex-direction: column;
 }
 
-/* Minecraft Premium Link Style (Netherite Block) */
+/* 5. Minecraft Block Buttons */
 .link-item {
     background-color: var(--mc-dark);
     display: flex;
     align-items: center;
-    padding: 15px 18px;
+    padding: 12px 18px;
     margin-bottom: 12px;
     text-decoration: none;
     color: #ffffff !important;
     
-    /* Minecraft 3D Border Effect */
-    border: 3px solid var(--mc-border-dark);
+    /* Minecraft 3D Border Technique */
+    border: 4px solid var(--mc-border-dark);
     border-top-color: var(--mc-border-light);
     border-left-color: var(--mc-border-light);
     
-    transition: all 0.2s ease;
-    transform: translateZ(0); /* ធ្វើឱ្យដើររលូនលើទូរសព្ទ */
+    transition: all 0.1s ease;
+    transform: translateZ(0);
 }
 
-/* Hover Effect: ប្តូរគែមទៅជាពណ៌មាស */
 .link-item:hover {
     background-color: #333;
     border-top-color: var(--mc-gold);
@@ -87,43 +90,45 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* ពេលចុចឱ្យផតចុះក្រោម */
 .link-item:active {
     transform: translateY(2px);
     border-top-color: var(--mc-border-dark);
     border-left-color: var(--mc-border-dark);
 }
 
+/* 6. Icons & Text Inside Buttons */
 .icon {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     margin-right: 15px;
     flex-shrink: 0;
+    image-rendering: pixelated; /* Makes icons look blocky */
 }
 
 .platform-name {
     flex-grow: 1;
-    font-weight: bold;
-    font-size: 0.95rem;
-    line-height: 1.3;
+    font-size: 1.5rem; /* Larger font for VT323 */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
+    line-height: 1.1;
 }
 
-/* លេខ ID: ពណ៌បៃតង Emerald */
 .id-text {
-    font-size: 0.8rem;
-    color: var(--mc-emerald);
-    font-weight: normal;
+    font-size: 1.1rem;
+    color: var(--mc-emerald) !important;
     display: block;
+    text-shadow: 2px 2px 0px #003f00;
 }
 
-/* Footer Section */
+/* 7. Footer Styling */
 footer {
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 .copyright {
     color: var(--mc-gold);
-    font-size: 0.8rem;
-    opacity: 0.8;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000;
 }
