@@ -1,132 +1,119 @@
-:root {
-    --bg-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_York_City_at_night_HDR.jpg/1280px-New_York_City_at_night_HDR.jpg');
-    --bg-color: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.12); 
-    --text-main: #ffffff;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    /* New Accent Color for Click */
-    --click-color: rgba(0, 150, 255, 0.4); 
-}
+  <style>
+        :root {
+            /* Smooth CSS Gradient instead of high-res photo */
+            --bg-gradient: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            --bg-color: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.1); 
+            --text-main: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --click-color: rgba(0, 150, 255, 0.4); 
+        }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: var(--bg-color);
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll; 
-    background-repeat: no-repeat;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    min-height: 100vh;
-    color: var(--text-main);
-    overflow-x: hidden;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            /* Optimizes scrolling */
+            -webkit-overflow-scrolling: touch;
+        }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.header img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    box-shadow: var(--shadow);
-    margin-bottom: 15px;
-    transition: transform 0.4s ease;
-}
+        .header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
 
-.header img:hover {
-    transform: rotate(360deg) scale(1.1);
-}
+        .header img:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
 
-.header h2 {
-    font-size: 1.8rem;
-    margin: 0;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    letter-spacing: 1px;
-}
+        .header h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-.container {
-    width: 100%;
-    max-width: 420px;
-}
+        .container {
+            width: 100%;
+            max-width: 420px;
+        }
 
-.link-item {
-    background: var(--card-bg);
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px);
-    will-change: transform;
-    display: flex;
-    align-items: center;
-    padding: 18px 25px;
-    margin-bottom: 18px;
-    border-radius: 50px;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+        .link-item {
+            /* Removed backdrop-filter for performance */
+            background: rgba(255, 255, 255, 0.08); 
+            display: flex;
+            align-items: center;
+            padding: 16px 22px;
+            margin-bottom: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.2s ease, background 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Forces Hardware Acceleration */
+            will-change: transform;
+            transform: translateZ(0);
+        }
 
-.link-item:hover {
-    transform: translateY(-4px) scale(1.03);
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-}
+        .link-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
 
-/* --- NEW CLICK COLOR ANIMATION --- */
-.link-item:active {
-    transform: scale(0.94); /* Shrink effect */
-    background: var(--click-color); /* Flash color on click */
-    border-color: #00d4ff; /* Bright border on click */
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); /* Cyan glow */
-    transition: transform 0.1s, background 0.1s; /* Faster response */
-}
+        .link-item:active {
+            transform: scale(0.96);
+            background: var(--click-color);
+        }
 
-.icon {
-    width: 28px;
-    height: 28px;
-    margin-right: 15px;
-    object-fit: contain;
-}
+        .icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
 
-.platform-name {
-    flex-grow: 1;
-}
+        .platform-name {
+            flex-grow: 1;
+        }
 
-.id-text {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    font-weight: normal;
-}
+        .id-text {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            font-weight: normal;
+        }
 
-footer {
-    margin-top: 40px;
-    text-align: center;
-    padding: 20px;
-}
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-.copyright {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
 
-@media (max-width: 480px) {
-    .container { max-width: 100%; }
-    body { padding-top: 30px; }
-    .link-item { backdrop-filter: none; background: rgba(40, 40, 40, 0.8); }
-    /* Mobile specific click color */
-    .link-item:active {
-        background: rgba(0, 212, 255, 0.4);
-    }
-}
+        /* Faster transitions for low-end mobile */
+        @media (prefers-reduced-motion: reduce) {
+            .link-item { transition: none; }
+        }
+    </style>
